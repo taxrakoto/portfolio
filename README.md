@@ -85,7 +85,7 @@ You can edit:
 
 The homepage capability cards come from `src/content/capabilities/`. Edit an existing file or copy `_template.md.example` to create a new one.
 
-The large certification block uses the certification where `featured: true`. Keep only one certification featured at a time. Certification entries can optionally provide a custom badge image; when no image is provided, the block displays the certification's `code` as text.
+The certification section displays a separate card for every certification where `featured: true`, ordered by `order`. Each entry can optionally provide its own custom badge image; when no image is provided, that card displays the certification's `code` as text.
 
 ## Add or update professional experience
 
@@ -167,9 +167,9 @@ Each certification is a Markdown file in `src/content/certifications/`. To add o
 1. Copy `src/content/certifications/_template.md.example`.
 2. Rename it with a URL-friendly filename ending in `.md`, such as `terraform-associate.md`.
 3. Update the certification details, verification link, and `order`.
-4. Set `featured: true` to show it in the homepage certification block, and set every other certification to `featured: false`.
+4. Set `featured: true` to show it as a card in the homepage certification section.
 
-The homepage currently displays only the featured certification. Non-featured certification files remain available as content but are not displayed elsewhere.
+Every featured certification is displayed as a separate card, ordered by `order`. Set `featured: false` to keep a certification in the content collection without displaying it on the homepage.
 
 ### Use a custom certification image
 
@@ -180,7 +180,7 @@ image: /certifications/terraform-associate.webp
 imageAlt: HashiCorp Certified Terraform Associate badge
 ```
 
-PNG, WebP, JPEG, and SVG files can be used. Prefer a square image with a transparent background for the best fit inside the circular certification mark. If `image` is omitted, the homepage automatically displays the value of `code` as text instead.
+PNG, WebP, JPEG, and SVG files can be used. Prefer a square image with a transparent background for the best fit inside the circular certification mark. Each certification card uses its own image settings. If `image` is omitted from a certification, only that card falls back to displaying the value of `code` as text.
 
 ## Change contact information
 

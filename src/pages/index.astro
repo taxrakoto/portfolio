@@ -9,10 +9,10 @@ const projects = (await getCollection('projects'))
   .sort((a, b) => a.data.order - b.data.order);
 const capabilities = (await getCollection('capabilities')).sort((a, b) => a.data.order - b.data.order);
 const certifications = (await getCollection('certifications')).sort((a, b) => a.data.order - b.data.order);
-const featuredCertification = certifications.find((certification) => certification.data.featured);
+const featuredCertifications = certifications.filter((certification) => certification.data.featured);
 const homeEntry = await getEntry('homePage', 'home');
 if (!homeEntry) throw new Error('Missing src/content/pages/home.md');
-if (!featuredCertification) throw new Error('Mark one certification as featured: true');
+if (featuredCertifications.length === 0) throw new Error('Mark at least one certification as featured: true');
 const home = homeEntry.data;
 ---
 
@@ -79,25 +79,34 @@ const home = homeEntry.data;
   </section>
 
   <section class="section certification-band">
-    <div class="shell certification-grid">
-      {featuredCertification.data.image ? (
-        <div class="cert-mark cert-mark-image">
-          <img
-            src={featuredCertification.data.image}
-            alt={featuredCertification.data.imageAlt ?? `${featuredCertification.data.title} credential badge`}
-            width="280"
-            height="280"
-            loading="lazy"
-          />
-        </div>
-      ) : (
-        <div class="cert-mark" aria-hidden="true">{featuredCertification.data.code}</div>
-      )}
-      <div>
+    <div class="shell">
+      <div class="certification-heading">
         <p class="kicker">{home.certificationKicker}</p>
-        <h2>{featuredCertification.data.title}</h2>
-        <p>{featuredCertification.data.summary}</p>
-        <a class="text-link" href={featuredCertification.data.verifyUrl} target="_blank" rel="noreferrer">{featuredCertification.data.verifyLabel}</a>
+      </div>
+      <div class="certification-grid">
+        {featuredCertifications.map((certification) => (
+          <article class="certification-card">
+            {certification.data.image ? (
+              <div class="cert-mark cert-mark-image">
+                <img
+                  src={certification.data.image}
+                  alt={certification.data.imageAlt ?? `${certification.data.title} credential badge`}
+                  width="280"
+                  height="280"
+                  loading="lazy"
+                />
+              </div>
+            ) : (
+              <div class="cert-mark" aria-hidden="true">{certification.data.code}</div>
+            )}
+            <div class="certification-card-copy">
+              <p class="certification-issuer">{certification.data.issuer}</p>
+              <h2>{certification.data.title}</h2>
+              <p>{certification.data.summary}</p>
+              <a class="text-link" href={certification.data.verifyUrl} target="_blank" rel="noreferrer">{certification.data.verifyLabel}</a>
+            </div>
+          </article>
+        ))}
       </div>
     </div>
   </section>

@@ -198,11 +198,17 @@ p { line-height: 1.7; }
 .capability-list h3, .principle-list h3 { margin-bottom: 10px; }
 .capability-list p, .principle-list p { margin: 0; color: #555156; }
 .certification-band { background: linear-gradient(135deg, #201017, #0a0a0c 62%); }
-.certification-grid { display: grid; grid-template-columns: 320px 1fr; gap: 80px; align-items: center; }
+.certification-heading { margin-bottom: 36px; }
+.certification-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 520px), 1fr)); gap: 20px; }
+.certification-card { display: grid; grid-template-columns: 160px minmax(0, 1fr); gap: 32px; align-items: center; padding: 32px; border: 1px solid var(--line); background: rgba(255,255,255,.025); }
 .cert-mark { width: 280px; height: 280px; display: grid; place-items: center; border: 1px solid var(--rose); border-radius: 50%; color: var(--rose); font: 700 4rem var(--mono); box-shadow: inset 0 0 0 24px rgba(223,111,146,.04); }
+.certification-card .cert-mark { width: 150px; height: 150px; font-size: 2rem; box-shadow: inset 0 0 0 12px rgba(223,111,146,.04); }
 .cert-mark-image { padding: 24px; overflow: hidden; }
+.certification-card .cert-mark-image { padding: 14px; }
 .cert-mark-image img { width: 100%; height: 100%; object-fit: contain; }
-.certification-grid p:not(.kicker) { color: var(--muted); max-width: 620px; }
+.certification-card-copy h2 { margin-bottom: 14px; font-size: clamp(2rem, 3.4vw, 3.2rem); }
+.certification-card-copy > p:not(.certification-issuer) { margin-bottom: 20px; color: var(--muted); }
+.certification-issuer { margin-bottom: 10px; color: var(--rose); font: 11px var(--mono); text-transform: uppercase; letter-spacing: .12em; }
 
 .page-hero { padding: 115px 0 90px; border-bottom: 1px solid var(--line); }
 .page-hero-grid { display: grid; grid-template-columns: 1.5fr .65fr; gap: 80px; align-items: end; }
@@ -351,7 +357,7 @@ p { line-height: 1.7; }
   .hero { min-height: auto; }
   .hero-grid { grid-template-columns: 1fr; padding-block: 72px; }
   .hero-portrait { min-height: 640px; max-width: 520px; width: 100%; margin-inline: auto; }
-  .split-heading, .expertise-grid, .certification-grid, .page-hero-grid, .project-body-grid, .two-column-copy, .about-grid, .principles-grid, .contact-grid { grid-template-columns: 1fr; }
+  .split-heading, .expertise-grid, .page-hero-grid, .project-body-grid, .two-column-copy, .about-grid, .principles-grid, .contact-grid { grid-template-columns: 1fr; }
   .sticky-heading, .project-sidebar { position: static; }
   .cert-mark { width: 220px; height: 220px; }
   .project-body-grid { gap: 64px; }
@@ -380,6 +386,8 @@ p { line-height: 1.7; }
   .about-photo { min-height: 460px; border-radius: 120px 120px 20px 20px; }
   .contact-list > * { grid-template-columns: 68px 1fr; }
   .contact-list b { display: none; }
+  .certification-card { grid-template-columns: 1fr; padding: 24px; }
+  .certification-card .cert-mark { width: 128px; height: 128px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
