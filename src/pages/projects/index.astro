@@ -1,0 +1,31 @@
+---
+import { getCollection, getEntry } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+
+const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
+const pageEntry = await getEntry('projectsPage', 'projects');
+if (!pageEntry) throw new Error('Missing src/content/pages/projects.md');
+const page = pageEntry.data;
+---
+
+<BaseLayout title={page.pageTitle} description={page.seoDescription}>
+  <section class="page-hero">
+    <div class="shell page-hero-grid">
+      <div><p class="kicker">{page.kicker}</p><h1>{page.headline}</h1></div>
+      <p>{page.introduction}</p>
+    </div>
+  </section>
+  <section class="section section-soft">
+    <div class="shell project-grid">
+      {projects.map((project, index) => <ProjectCard project={project} index={index} />)}
+    </div>
+  </section>
+  <section class="section-compact section-light">
+    <div class="shell markdown-note">
+      <p class="kicker">{page.workflowKicker}</p>
+      <h2>{page.workflowTitle}</h2>
+      <p>{page.workflowText}</p>
+    </div>
+  </section>
+</BaseLayout>

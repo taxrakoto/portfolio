@@ -1,0 +1,10 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getEntry } from 'astro:content';
+const pageEntry = await getEntry('notFoundPage', '404');
+if (!pageEntry) throw new Error('Missing src/content/pages/404.md');
+const page = pageEntry.data;
+---
+<BaseLayout title={page.pageTitle} noindex={true}>
+  <section class="empty-state"><div class="shell"><p class="kicker">{page.kicker}</p><h1>{page.headline}</h1><p>{page.message}</p><a class="button button-primary" href="/">{page.buttonLabel}</a></div></section>
+</BaseLayout>

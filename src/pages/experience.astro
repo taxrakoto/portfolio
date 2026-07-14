@@ -1,0 +1,49 @@
+---
+import { getCollection, getEntry } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const pageEntry = await getEntry('experiencePage', 'experience');
+if (!pageEntry) throw new Error('Missing src/content/pages/experience.md');
+const page = pageEntry.data;
+const roles = (await getCollection('experience')).sort((a, b) => a.data.order - b.data.order);
+const education = (await getCollection('education')).sort((a, b) => a.data.order - b.data.order);
+---
+
+<BaseLayout title={page.pageTitle} description={page.seoDescription}>
+  <section class="page-hero">
+    <div class="shell page-hero-grid">
+      <div><p class="kicker">{page.kicker}</p><h1>{page.headline}</h1></div>
+      <div><p>{page.introduction}</p><button class="button button-secondary no-print" data-print>{page.printButtonLabel}</button></div>
+    </div>
+  </section>
+
+  <section class="section section-light experience-section">
+    <div class="shell timeline">
+      {roles.map((role) => (
+        <article>
+          <div class="timeline-date">{role.data.period}</div>
+          <div class="timeline-content">
+            <p class="kicker">{role.data.employer}</p>
+            <h2>{role.data.title}</h2>
+            <ul>{role.data.achievements.map((achievement) => <li>{achievement}</li>)}</ul>
+            <div class="timeline-stack">{role.data.stack.join(' · ')}</div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="section expertise-summary">
+    <div class="shell two-column-copy">
+      <div><p class="kicker">{page.educationKicker}</p><h2>{page.educationTitle}</h2></div>
+      <div class="education-list">
+        {education.map((item) => (
+          <div><strong>{item.data.qualification}</strong><span>{item.data.institution} · {item.data.year}</span></div>
+        ))}
+      </div>
+    </div>
+  </section>
+  <script>
+    document.querySelector('[data-print]')?.addEventListener('click', () => window.print());
+  </script>
+</BaseLayout>

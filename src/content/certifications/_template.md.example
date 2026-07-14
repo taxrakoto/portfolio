@@ -1,0 +1,11 @@
+---
+code: SHORT CODE
+title: Full certification title
+issuer: Issuing organization
+summary: Explain what the credential validates.
+verifyUrl: https://example.com/your-public-credential
+verifyLabel: Verify credential ↗
+featured: false
+order: 3
+---
+

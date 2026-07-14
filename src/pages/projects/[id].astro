@@ -1,0 +1,41 @@
+---
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects');
+  return projects.map((project) => ({ params: { id: project.id }, props: { project } }));
+}
+
+interface Props { project: CollectionEntry<'projects'>; }
+const { project } = Astro.props;
+const { Content } = await render(project);
+const { data } = project;
+---
+
+<BaseLayout title={data.title} description={data.summary}>
+  <article class={`project-detail accent-${data.accent}`}>
+    <header class="project-detail-hero">
+      <div class="shell">
+        <a class="back-link" href="/projects/">← All projects</a>
+        <p class="kicker">{data.eyebrow}</p>
+        <h1>{data.title}</h1>
+        <p class="project-lede">{data.summary}</p>
+        <div class="project-facts">
+          <div><span>Role</span><strong>{data.role}</strong></div>
+          <div><span>Year</span><strong>{data.year}</strong></div>
+          <div><span>Status</span><strong>{data.status}</strong></div>
+        </div>
+      </div>
+    </header>
+
+    <div class="shell project-body-grid">
+      <aside class="project-sidebar">
+        <div><p class="kicker">Stack</p><ul class="tag-list">{data.stack.map((item) => <li>{item}</li>)}</ul></div>
+        <div><p class="kicker">Impact</p><ul class="impact-list">{data.impact.map((item) => <li>{item}</li>)}</ul></div>
+        {data.repository && <a class="button button-secondary" href={data.repository} target="_blank" rel="noreferrer">View repository ↗</a>}
+      </aside>
+      <div class="prose"><Content /></div>
+    </div>
+  </article>
+</BaseLayout>

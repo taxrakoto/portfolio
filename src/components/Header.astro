@@ -1,0 +1,45 @@
+---
+import { getEntry } from 'astro:content';
+
+interface Props {
+  currentPath: string;
+}
+
+const { currentPath } = Astro.props;
+const siteEntry = await getEntry('settings', 'site');
+if (!siteEntry) throw new Error('Missing src/content/settings/site.md');
+const site = siteEntry.data;
+const isActive = (href: string) =>
+  href === '/' ? currentPath === '/' : currentPath.startsWith(href);
+---
+
+<header class="site-header">
+  <div class="shell header-inner">
+    <a class="wordmark" href="/" aria-label={`${site.name}, home`}>
+      <span class="wordmark-mark" aria-hidden="true">{site.monogram}</span>
+      <span class="wordmark-text">
+        <strong>{site.name}</strong>
+        <small>{site.role}</small>
+      </span>
+    </a>
+
+    <nav class="desktop-nav" aria-label="Primary navigation">
+      {site.navigation.map((item) => (
+        <a href={item.href} aria-current={isActive(item.href) ? 'page' : undefined}>
+          {item.label}
+        </a>
+      ))}
+    </nav>
+
+    <details class="mobile-nav">
+      <summary aria-label="Open navigation">Menu</summary>
+      <nav aria-label="Mobile navigation">
+        {site.navigation.map((item) => (
+          <a href={item.href} aria-current={isActive(item.href) ? 'page' : undefined}>
+            {item.label}
+          </a>
+        ))}
+      </nav>
+    </details>
+  </div>
+</header>

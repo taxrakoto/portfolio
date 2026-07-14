@@ -1,0 +1,34 @@
+---
+title: Your project title
+eyebrow: Short project category
+summary: One sentence explaining the problem, solution, and why it matters.
+role: Your role
+year: "2026"
+status: Completed
+featured: false
+order: 10
+stack:
+  - Kubernetes
+  - Terraform
+impact:
+  - A measurable result
+  - A second useful outcome
+repository: https://github.com/taxrakoto/example
+accent: rose
+---
+
+## Context
+
+Describe the problem, constraints, and environment.
+
+## Approach
+
+Explain your architecture and the decisions you owned.
+
+## Reliability and security
+
+Document the operational safeguards that made the project production-ready.
+
+## Result
+
+Close with measurable outcomes and what you learned.

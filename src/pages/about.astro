@@ -1,0 +1,42 @@
+---
+import { getEntry } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const pageEntry = await getEntry('aboutPage', 'about');
+if (!pageEntry) throw new Error('Missing src/content/pages/about.md');
+const page = pageEntry.data;
+---
+
+<BaseLayout title={page.pageTitle} description={page.seoDescription}>
+  <section class="about-hero section">
+    <div class="shell about-grid">
+      <div class="about-photo"><img src="/tahina.webp" alt={page.portraitAlt} width="1024" height="1024" /></div>
+      <div>
+        <p class="kicker">{page.kicker}</p>
+        <h1>{page.headline}</h1>
+        <p class="large-copy">{page.introduction}</p>
+        <p>{page.bodyText}</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href={page.primaryAction.href}>{page.primaryAction.label}</a>
+          <a class="button button-secondary" href={page.secondaryAction.href}>{page.secondaryAction.label}</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-light">
+    <div class="shell principles-grid">
+      <div class="section-heading sticky-heading"><p class="kicker">{page.principlesKicker}</p><h2>{page.principlesTitle}</h2></div>
+      <div class="principle-list">
+        {page.principles.map((principle, index) => (
+          <article>
+            <span>{String(index + 1).padStart(2, '0')}</span>
+            <div><h3>{principle.title}</h3><p>{principle.summary}</p></div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section quote-band"><div class="shell"><p class="kicker">{page.quoteKicker}</p><blockquote>{page.quote}</blockquote><cite>{page.quoteAuthor}</cite></div></section>
+</BaseLayout>

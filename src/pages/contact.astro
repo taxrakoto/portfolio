@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getEntry } from 'astro:content';
+
+const siteEntry = await getEntry('settings', 'site');
+const pageEntry = await getEntry('contactPage', 'contact');
+if (!siteEntry) throw new Error('Missing src/content/settings/site.md');
+if (!pageEntry) throw new Error('Missing src/content/pages/contact.md');
+const site = siteEntry.data;
+const page = pageEntry.data;
+---
+
+<BaseLayout title={page.pageTitle} description={page.seoDescription}>
+  <section class="contact-hero">
+    <div class="shell contact-grid">
+      <div><p class="kicker">{page.kicker}</p><h1>{page.headline}</h1><p class="hero-intro">{page.introduction}</p></div>
+      <div class="contact-list">
+        <a href={`mailto:${site.email}`}><span>{page.emailLabel}</span><strong>{site.email}</strong><b>↗</b></a>
+        <a href={site.github} target="_blank" rel="noreferrer"><span>{page.githubLabel}</span><strong>{site.githubLabel}</strong><b>↗</b></a>
+        <a href={site.linkedin} target="_blank" rel="noreferrer"><span>{page.linkedinLabel}</span><strong>{site.linkedinLabel}</strong><b>↗</b></a>
+        <div><span>{page.locationLabel}</span><strong>{site.location}</strong><b>{site.timezone}</b></div>
+      </div>
+    </div>
+  </section>
+  <section class="section-compact section-light"><div class="shell contact-note"><p class="kicker">{page.noteKicker}</p><h2>{page.noteTitle}</h2><a class="button button-primary" href={`mailto:${site.email}?subject=${encodeURIComponent(page.emailSubject)}`}>{page.emailButtonLabel}</a></div></section>
+</BaseLayout>

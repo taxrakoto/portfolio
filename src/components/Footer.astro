@@ -1,0 +1,25 @@
+---
+import { getEntry } from 'astro:content';
+const siteEntry = await getEntry('settings', 'site');
+if (!siteEntry) throw new Error('Missing src/content/settings/site.md');
+const site = siteEntry.data;
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="shell footer-grid">
+    <div>
+      <p class="kicker">{site.footerKicker}</p>
+      <h2>{site.footerHeadline}</h2>
+    </div>
+    <div class="footer-actions">
+      <a class="button button-primary" href={`mailto:${site.email}`}>{site.footerEmailLabel}</a>
+      <a class="text-link" href={site.github} target="_blank" rel="noreferrer">{site.footerGithubLabel}</a>
+      <a class="text-link" href={site.linkedin} target="_blank" rel="noreferrer">{site.footerLinkedinLabel}</a>
+    </div>
+  </div>
+  <div class="shell footer-meta">
+    <span>© {year} {site.name}</span>
+    <span>{site.location} · {site.availability}</span>
+  </div>
+</footer>

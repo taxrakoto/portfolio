@@ -1,0 +1,28 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  project: CollectionEntry<'projects'>;
+  index?: number;
+}
+
+const { project, index = 0 } = Astro.props;
+const { data } = project;
+---
+
+<article class={`project-card accent-${data.accent}`}>
+  <div class="project-card-topline">
+    <span>{String(index + 1).padStart(2, '0')}</span>
+    <span>{data.status}</span>
+  </div>
+  <p class="kicker">{data.eyebrow}</p>
+  <h3><a href={`/projects/${project.id}/`}>{data.title}</a></h3>
+  <p>{data.summary}</p>
+  <ul class="tag-list" aria-label="Technologies">
+    {data.stack.slice(0, 5).map((item) => <li>{item}</li>)}
+  </ul>
+  <div class="project-card-footer">
+    <strong>{data.impact[0]}</strong>
+    <a class="circle-link" href={`/projects/${project.id}/`} aria-label={`View ${data.title}`}>↗</a>
+  </div>
+</article>
