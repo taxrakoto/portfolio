@@ -181,6 +181,8 @@ const certifications = defineCollection({
     title: z.string(),
     issuer: z.string(),
     summary: z.string(),
+    image: z.string().optional(),
+    imageAlt: z.string().optional(),
     verifyUrl: z.string().url(),
     verifyLabel: z.string(),
     featured: z.boolean().default(false),

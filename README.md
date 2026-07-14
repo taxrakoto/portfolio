@@ -85,7 +85,7 @@ You can edit:
 
 The homepage capability cards come from `src/content/capabilities/`. Edit an existing file or copy `_template.md.example` to create a new one.
 
-The large certification block uses the certification where `featured: true`. Keep only one certification featured at a time.
+The large certification block uses the certification where `featured: true`. Keep only one certification featured at a time. Certification entries can optionally provide a custom badge image; when no image is provided, the block displays the certification's `code` as text.
 
 ## Add or update professional experience
 
@@ -119,6 +119,38 @@ src/content/projects/observability-platform.md
 
 Set `featured: true` to show a project on the homepage. Use `order` to control its position.
 
+### Add a tile under Selected Work
+
+The homepage automatically displays every project whose frontmatter contains:
+
+```yaml
+featured: true
+```
+
+To feature an existing project, open its Markdown file in `src/content/projects/` and change `featured: false` to `featured: true`. For example, to add **Backstage on Kubernetes** as a tile, update `src/content/projects/backstage-gitops-platform.md`.
+
+To add a completely new project tile:
+
+1. Copy `src/content/projects/_template.md.example`.
+2. Rename it to a URL-friendly filename ending in `.md`, such as `my-new-project.md`.
+3. Complete the project details and case study.
+4. Set `featured: true`.
+5. Set `order` to the position where the tile should appear.
+
+The filename becomes the project URL. For example, `my-new-project.md` creates `/projects/my-new-project/`.
+
+The Selected Work counter is text rather than an automatic count. After adding a featured project, update `projectsKicker` in `src/content/pages/home.md`. For example, change:
+
+```yaml
+projectsKicker: Selected work / 01—03
+```
+
+to:
+
+```yaml
+projectsKicker: Selected work / 01—04
+```
+
 ## Add education or certifications
 
 Copy the appropriate example file:
@@ -127,6 +159,28 @@ Copy the appropriate example file:
 - `src/content/certifications/_template.md.example`
 
 Rename the copy so it ends with `.md`, update the fields, and save it. Files ending in `.md.example` are documentation templates and are not displayed by the site.
+
+### Add a certification
+
+Each certification is a Markdown file in `src/content/certifications/`. To add one:
+
+1. Copy `src/content/certifications/_template.md.example`.
+2. Rename it with a URL-friendly filename ending in `.md`, such as `terraform-associate.md`.
+3. Update the certification details, verification link, and `order`.
+4. Set `featured: true` to show it in the homepage certification block, and set every other certification to `featured: false`.
+
+The homepage currently displays only the featured certification. Non-featured certification files remain available as content but are not displayed elsewhere.
+
+### Use a custom certification image
+
+Place the badge or logo in `public/certifications/`, then add `image` and `imageAlt` to the certification frontmatter:
+
+```yaml
+image: /certifications/terraform-associate.webp
+imageAlt: HashiCorp Certified Terraform Associate badge
+```
+
+PNG, WebP, JPEG, and SVG files can be used. Prefer a square image with a transparent background for the best fit inside the circular certification mark. If `image` is omitted, the homepage automatically displays the value of `code` as text instead.
 
 ## Change contact information
 

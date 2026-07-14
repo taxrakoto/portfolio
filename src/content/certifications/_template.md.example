@@ -3,9 +3,11 @@ code: SHORT CODE
 title: Full certification title
 issuer: Issuing organization
 summary: Explain what the credential validates.
+# Optional: place the image in public/certifications/ and use its public path here.
+# image: /certifications/credential-badge.webp
+# imageAlt: Full certification badge description
 verifyUrl: https://example.com/your-public-credential
 verifyLabel: Verify credential ↗
 featured: false
 order: 3
 ---
-

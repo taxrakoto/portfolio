@@ -80,7 +80,19 @@ const home = homeEntry.data;
 
   <section class="section certification-band">
     <div class="shell certification-grid">
-      <div class="cert-mark" aria-hidden="true">{featuredCertification.data.code}</div>
+      {featuredCertification.data.image ? (
+        <div class="cert-mark cert-mark-image">
+          <img
+            src={featuredCertification.data.image}
+            alt={featuredCertification.data.imageAlt ?? `${featuredCertification.data.title} credential badge`}
+            width="280"
+            height="280"
+            loading="lazy"
+          />
+        </div>
+      ) : (
+        <div class="cert-mark" aria-hidden="true">{featuredCertification.data.code}</div>
+      )}
       <div>
         <p class="kicker">{home.certificationKicker}</p>
         <h2>{featuredCertification.data.title}</h2>
