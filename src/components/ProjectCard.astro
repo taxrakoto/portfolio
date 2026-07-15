@@ -23,6 +23,9 @@ const { data } = project;
   </ul>
   <div class="project-card-footer">
     <strong>{data.impact[0]}</strong>
-    <a class="circle-link" href={`/projects/${project.id}/`} aria-label={`View ${data.title}`}>↗</a>
+    <a class="project-link" href={`/projects/${project.id}/`} aria-label={`View project: ${data.title}`}>
+      <span>View project</span>
+      <span aria-hidden="true">↗</span>
+    </a>
   </div>
 </article>

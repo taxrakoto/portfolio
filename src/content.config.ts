@@ -81,10 +81,7 @@ const projectsPage = defineCollection({
     seoDescription: z.string(),
     kicker: z.string(),
     headline: z.string(),
-    introduction: z.string(),
-    workflowKicker: z.string(),
-    workflowTitle: z.string(),
-    workflowText: z.string()
+    introduction: z.string()
   })
 });
 

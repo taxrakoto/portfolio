@@ -21,11 +21,4 @@ const page = pageEntry.data;
       {projects.map((project, index) => <ProjectCard project={project} index={index} />)}
     </div>
   </section>
-  <section class="section-compact section-light">
-    <div class="shell markdown-note">
-      <p class="kicker">{page.workflowKicker}</p>
-      <h2>{page.workflowTitle}</h2>
-      <p>{page.workflowText}</p>
-    </div>
-  </section>
 </BaseLayout>
