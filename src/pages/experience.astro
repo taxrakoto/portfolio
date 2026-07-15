@@ -13,7 +13,10 @@ const education = (await getCollection('education')).sort((a, b) => a.data.order
   <section class="page-hero">
     <div class="shell page-hero-grid">
       <div><p class="kicker">{page.kicker}</p><h1>{page.headline}</h1></div>
-      <div><p>{page.introduction}</p><button class="button button-secondary no-print" data-print>{page.printButtonLabel}</button></div>
+      <div>
+        <p>{page.introduction}</p>
+        <a class="button button-secondary" href="/Tahina_Rakotomaharo_CV.pdf" download>{page.cvButtonLabel}</a>
+      </div>
     </div>
   </section>
 
@@ -21,10 +24,12 @@ const education = (await getCollection('education')).sort((a, b) => a.data.order
     <div class="shell timeline">
       {roles.map((role) => (
         <article>
-          <div class="timeline-date">{role.data.period}</div>
           <div class="timeline-content">
             <p class="kicker">{role.data.employer}</p>
-            <h2>{role.data.title}</h2>
+            <div class="timeline-heading">
+              <h2>{role.data.title}</h2>
+              <span class="timeline-date">{role.data.period}</span>
+            </div>
             <ul>{role.data.achievements.map((achievement) => <li>{achievement}</li>)}</ul>
             <div class="timeline-stack">{role.data.stack.join(' · ')}</div>
           </div>
@@ -43,7 +48,4 @@ const education = (await getCollection('education')).sort((a, b) => a.data.order
       </div>
     </div>
   </section>
-  <script>
-    document.querySelector('[data-print]')?.addEventListener('click', () => window.print());
-  </script>
 </BaseLayout>

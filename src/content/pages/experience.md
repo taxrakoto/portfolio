@@ -4,7 +4,7 @@ seoDescription: Tahina Rakotomaharo's DevOps, systems engineering, and infrastru
 kicker: Experience / 2015—Present
 headline: Operations depth. Modern delivery.
 introduction: I grew from hands-on systems engineering into DevOps leadership, bringing production discipline to Kubernetes, CI/CD, GitOps, and cloud automation.
-printButtonLabel: Print / Save as PDF
+cvButtonLabel: Download my CV
 educationKicker: Education
 educationTitle: Technical foundation.
 ---

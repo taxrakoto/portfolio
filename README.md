@@ -24,8 +24,8 @@ All editable text is inside `src/content/`:
 
 - `settings/site.md` — name, job title, email, GitHub, LinkedIn, location, navigation, availability, SEO description, and footer
 - `pages/home.md` — homepage headline, introduction, buttons, status, metrics, section headings, and supporting text
-- `pages/projects.md` — Projects page headline and publishing explanation
-- `pages/experience.md` — Experience page headline, introduction, print button, and education heading
+- `pages/projects.md` — Projects page headline and introduction
+- `pages/experience.md` — Experience page headline, introduction, CV download-button label, and education heading
 - `pages/about.md` — biography, buttons, working principles, and quote
 - `pages/contact.md` — Contact page headline, labels, email prompt, and button
 - `pages/404.md` — page-not-found message
@@ -200,6 +200,25 @@ The Contact page automatically uses these values. Its surrounding headline and i
 
 - Profile photo: replace `public/tahina.webp` with another WebP image using the same filename.
 - Social sharing preview: replace `public/og.png` with a 1200 × 630 PNG using the same filename.
+
+## Replace the downloadable CV
+
+The **Download my CV** button on the Experience page downloads:
+
+```text
+public/Tahina_Rakotomaharo_CV.pdf
+```
+
+To update the CV later:
+
+1. Export the new CV as a PDF.
+2. Check that it does not contain private information you do not want publicly available.
+3. Rename it exactly `Tahina_Rakotomaharo_CV.pdf`.
+4. Replace the existing file in `public/` with the new PDF.
+5. Run `npm run start` and test the button on `/experience/`.
+6. Run `npm run build` before committing and publishing the update.
+
+Keep the same filename so the existing download link continues to work. If you change the filename, also update the `href` in `src/pages/experience.astro`.
 
 ## Check before publishing
 

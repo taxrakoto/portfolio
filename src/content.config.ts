@@ -93,7 +93,7 @@ const experiencePage = defineCollection({
     kicker: z.string(),
     headline: z.string(),
     introduction: z.string(),
-    printButtonLabel: z.string(),
+    cvButtonLabel: z.string(),
     educationKicker: z.string(),
     educationTitle: z.string()
   })
