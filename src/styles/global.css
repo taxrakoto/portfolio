@@ -263,8 +263,8 @@ p { line-height: 1.7; }
 .education-list span { color: var(--muted); }
 
 .about-grid { display: grid; grid-template-columns: .75fr 1.25fr; gap: 80px; align-items: center; }
-.about-photo { overflow: hidden; min-height: 650px; border-radius: 180px 180px 20px 20px; background: #191116; }
-.about-photo img { width: 100%; height: 100%; object-fit: cover; filter: saturate(.8); }
+.about-photo { position: relative; overflow: hidden; min-height: 650px; border-radius: 180px 180px 20px 20px; background: #191116; }
+.about-photo img { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: cover; filter: saturate(.8); }
 .about-grid h1 { font-size: clamp(3.5rem, 7vw, 6.6rem); }
 .about-grid .large-copy { color: var(--paper-dim); font-size: 1.22rem; }
 .about-grid p:not(.kicker):not(.large-copy) { color: var(--muted); }
