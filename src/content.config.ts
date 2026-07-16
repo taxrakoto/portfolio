@@ -176,6 +176,7 @@ const certifications = defineCollection({
   schema: z.object({
     code: z.string(),
     title: z.string(),
+    credentialType: z.string(),
     issuer: z.string(),
     summary: z.string(),
     image: z.string().optional(),

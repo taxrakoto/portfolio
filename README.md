@@ -166,7 +166,7 @@ Each certification is a Markdown file in `src/content/certifications/`. To add o
 
 1. Copy `src/content/certifications/_template.md.example`.
 2. Rename it with a URL-friendly filename ending in `.md`, such as `terraform-associate.md`.
-3. Update the certification details, verification link, and `order`.
+3. Update the certification details, credential type, verification link, and `order`.
 4. Set `featured: true` to show it as a card in the homepage certification section.
 
 Every featured certification is displayed as a separate card, ordered by `order`. Set `featured: false` to keep a certification in the content collection without displaying it on the homepage.

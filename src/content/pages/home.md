@@ -29,6 +29,5 @@ projectsButtonLabel: View all projects
 capabilitiesKicker: Capabilities
 capabilitiesTitle: From Linux foundations to platform delivery.
 capabilitiesIntroduction: I connect the operational details—systems, automation, delivery, observability, and recovery—into a platform teams can trust.
-certificationKicker: Verified certification
+certificationKicker: Certifications & training
 ---
-

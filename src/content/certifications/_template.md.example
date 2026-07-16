@@ -1,6 +1,7 @@
 ---
 code: SHORT CODE
 title: Full certification title
+credentialType: Professional certification or course completion
 issuer: Issuing organization
 summary: Explain what the credential validates.
 # Optional: place the image in public/certifications/ and use its public path here.
