@@ -5,8 +5,8 @@ summary: A self-hosted Kubernetes platform where Jenkins builds artifacts and Ar
 role: DevOps Lead
 year: "2025"
 status: Production
-featured: true
-order: 2
+featured: false
+order: 3
 stack:
   - Kubernetes
   - Argo CD
@@ -18,7 +18,7 @@ impact:
   - Achieved 99.9% platform uptime
   - Reduced rollback time by 60%
   - Made application delivery auditable and repeatable
-accent: green
+accent: blue
 ---
 
 ## Context

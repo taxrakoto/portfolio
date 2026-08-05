@@ -33,7 +33,7 @@ navigation:
   - label: Contact
     href: /contact/
 footerKicker: Let’s build dependable systems.
-footerHeadline: Need a DevOps engineer who can own the path from commit to production?
+footerHeadline: Need a DevOps and Platform Engineer for your Project ? 
 footerEmailLabel: Email Tahina
 footerGithubLabel: GitHub ↗
 footerLinkedinLabel: LinkedIn ↗

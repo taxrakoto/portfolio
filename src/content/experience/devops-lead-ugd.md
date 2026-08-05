@@ -1,5 +1,5 @@
 ---
-period: May 2023—Present
+period: May 2023—June 2026
 employer: World Bank project · Unité de Gouvernance Digitale
 title: DevOps Lead
 achievements:

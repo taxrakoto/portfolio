@@ -5,7 +5,7 @@ summary: Repeatable AWS environments provisioned with Terraform and configured w
 role: DevOps Engineer
 year: "2023"
 status: Completed
-featured: true
+featured: false
 order: 3
 stack:
   - AWS

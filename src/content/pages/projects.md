@@ -1,7 +1,7 @@
 ---
 pageTitle: Projects
 seoDescription: DevOps and platform engineering case studies covering Kubernetes, GitOps, CI/CD, AWS, Terraform, and developer platforms.
-kicker: Projects / Markdown powered
-headline: Systems I’ve built and improved.
-introduction: Case studies focused on engineering judgment, operational safeguards, and measurable outcomes—not tool inventories.
+kicker: Featured Projects.
+headline: Systems and Platforms I’ve built.
+introduction: Case studies demonstrating how I apply DevOps, automation, Kubernetes, CI/CD, and GitOps to build reliable and efficient systems.
 ---

@@ -5,8 +5,8 @@ summary: An opinionated Helm chart for deploying Backstage through Argo CD with 
 role: Platform Engineer
 year: "2026"
 status: Active lab
-featured: false
-order: 4
+featured: true
+order: 2
 stack:
   - Backstage
   - Kubernetes
@@ -19,7 +19,7 @@ impact:
   - Integrated existing platform services instead of duplicating them
   - Documented real-world GitLab discovery constraints
 repository: https://github.com/taxrakoto/backstage-chart
-accent: blue
+accent: green
 ---
 
 ## Context
