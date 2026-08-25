@@ -4,9 +4,9 @@ eyebrow: CI/CD standardization
 summary: Reusable pipeline primitives that made delivery faster, safer, and consistent across multiple application teams.
 role: DevOps Lead
 year: "2024"
-status: Production
+status: Active lab
 featured: true
-order: 1
+order: 2
 stack:
   - Jenkins
   - Groovy

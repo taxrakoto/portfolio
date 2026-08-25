@@ -1,12 +1,12 @@
 ---
-title: Backstage on Kubernetes
+title: Backstage Custom Image
 eyebrow: Developer platform lab
 summary: An opinionated Helm chart for deploying Backstage through Argo CD with external secrets, managed PostgreSQL, and Gateway API.
 role: Platform Engineer
 year: "2026"
 status: Active lab
-featured: true
-order: 2
+featured: false
+order: 4
 stack:
   - Backstage
   - Kubernetes
@@ -19,7 +19,7 @@ impact:
   - Integrated existing platform services instead of duplicating them
   - Documented real-world GitLab discovery constraints
 repository: https://github.com/taxrakoto/backstage-chart
-accent: green
+accent: amber
 ---
 
 ## Context
