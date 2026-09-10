@@ -17,6 +17,17 @@ const home = homeEntry.data;
 ---
 
 <BaseLayout>
+  <Fragment slot="head">
+    <link
+      rel="preload"
+      as="image"
+      href="/tahina-polished-960.webp"
+      imagesrcset="/tahina-polished-640.webp 640w, /tahina-polished-960.webp 960w, /tahina-polished.webp 1254w"
+      imagesizes="(max-width: 560px) calc(100vw - 32px), (max-width: 900px) 520px, 363px"
+      fetchpriority="high"
+      type="image/webp"
+    />
+  </Fragment>
   <section class="hero">
     <div class="shell hero-grid">
       <div class="hero-copy">
@@ -29,7 +40,16 @@ const home = homeEntry.data;
         </div>
       </div>
       <div class="hero-portrait" aria-label={home.portraitAlt}>
-        <img src="/tahina-polished.webp" alt={home.portraitAlt} width="1254" height="1254" />
+        <img
+          src="/tahina-polished-960.webp"
+          srcset="/tahina-polished-640.webp 640w, /tahina-polished-960.webp 960w, /tahina-polished.webp 1254w"
+          sizes="(max-width: 560px) calc(100vw - 32px), (max-width: 900px) 520px, 363px"
+          alt={home.portraitAlt}
+          width="960"
+          height="960"
+          loading="eager"
+          fetchpriority="high"
+        />
         <div class="status-card">
           <span class="status-dot" aria-hidden="true"></span>
           <div><strong>{home.statusTitle}</strong><small>{home.statusText}</small></div>
